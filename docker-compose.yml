@@ -1,0 +1,42 @@
+services:
+  kdc:
+    build: kdc
+    hostname: kdc.cribl.local
+    stop_grace_period: "1s"
+    env_file:
+      - .krb5.env
+    volumes:
+      - ./kdc/init-script.sh:/tmp/init-script.sh
+      - ./.keytab/:/var/lib/keytab/
+
+  stream:
+    image: cribl/cribl:4.7.1
+    platform: linux/amd64
+    hostname: stream.cribl.local
+    depends_on:
+      - kdc
+    ports:
+      - "9000:9000"
+    env_file:
+      - .krb5.env
+    volumes:
+      - ./krb5.conf:/etc/krb5.conf
+      - ./cribl/local/cribl/cribl.yml:/opt/cribl/local/cribl/cribl.yml
+      - ./cribl/local/cribl/inputs.yml:/opt/cribl/local/cribl/inputs.yml
+      - ./.keytab/:/var/lib/keytab/
+
+  sender:
+    build: sender
+    stop_grace_period: "1s"
+    hostname: sender.cribl.local
+    environment:
+      LOG_LEVEL: DEBUG
+    env_file:
+      - .krb5.env
+    depends_on:
+      - kdc
+      - stream
+    volumes:
+      - ./sender:/app
+      - ./krb5.conf:/etc/krb5.conf
+      - ./.keytab/:/var/lib/keytab/

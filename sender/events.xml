@@ -1,0 +1,45 @@
+<s:Envelope
+	xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:e="http://schemas.xmlsoap.org/ws/2004/08/eventing"
+	xmlns:w="http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd"
+	xmlns:p="http://schemas.microsoft.com/wbem/wsman/1/wsman.xsd" >
+	<s:Header>
+		<a:To>https://cribl.wectest.net:5986/wsman/subscriptions/7ffc53b1-0845-5b47-bcc2-5e91c06194c4</a:To>
+		<m:MachineID xmlns:m="http://schemas.microsoft.com/wbem/wsman/1/machineid" s:mustUnderstand="false">win10.windomain.local</m:MachineID>
+		<a:ReplyTo>
+			<a:Address s:mustUnderstand="true">http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>
+		</a:ReplyTo>
+		<a:Action s:mustUnderstand="true">http://schemas.dmtf.org/wbem/wsman/1/wsman/Events</a:Action>
+		<w:MaxEnvelopeSize s:mustUnderstand= "true">512000</w:MaxEnvelopeSize>
+		<a:MessageID>uuid:31652DEB-C9E8-45D6-B3E8-90AC64D48422</a:MessageID>
+		<w:Locale xml:lang="en-US" s:mustUnderstand="false" />
+		<p:DataLocale xml:lang="en-US" s:mustUnderstand="false" />
+		<p:SessionId s:mustUnderstand="false">uuid:981C530F-BE2A-4AAB-BACB-6FB4CD1A14AB</p:SessionId>
+		<p:OperationID s:mustUnderstand="false">uuid:C7F39CB2-8FFD-4DA3-A111-CDB303EEA098</p:OperationID>
+		<p:SequenceId s:mustUnderstand="false">1</p:SequenceId>
+		<w:OperationTimeout>PT60.000S</w:OperationTimeout>
+		<e:Identifier xmlns:e="http://schemas.xmlsoap.org/ws/2004/08/eventing">7ffc53b1-0845-5b47-bcc2-5e91c06194c4</e:Identifier>
+		<w:Bookmark>
+			<BookmarkList>
+				<Bookmark Channel="System" RecordId="149161" IsCurrent="true"/>
+			</BookmarkList>
+		</w:Bookmark>
+		<w:AckRequested/>
+	</s:Header>
+	<s:Body>
+		<w:Events>
+			<w:Event Action="http://schemas.dmtf.org/wbem/wsman/1/wsman/Event">
+				<![CDATA[How about a GOAT parade??? 🐐🐐🐐🐐🐐🐐🐐🐐🐐]]>
+			</w:Event>
+			<w:Event Action="http://schemas.dmtf.org/wbem/wsman/1/wsman/Event">
+				<![CDATA[Yeah, just more goats...
+
+🐐🐐🐐🐐🐐🐐🐐🐐🐐]]>
+			</w:Event>
+			<w:Event Action="http://schemas.dmtf.org/wbem/wsman/1/wsman/Event">
+				<![CDATA[😎]]>
+			</w:Event>
+		</w:Events>
+	</s:Body>
+</s:Envelope>

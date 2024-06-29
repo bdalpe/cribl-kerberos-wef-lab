@@ -1,0 +1,38 @@
+inputs:
+  wef:
+    disabled: false
+    pqEnabled: false
+    streamtags: []
+    host: 0.0.0.0
+    port: 5986
+    authMethod: kerberos
+    maxActiveReq: 256
+    enableProxyHeader: false
+    captureHeaders: true
+    keepAliveTimeout: 300
+    allowMachineIdMismatch: false
+    type: wef
+    subscriptions:
+      - contentFormat: Raw
+        heartbeatInterval: 60
+        batchTimeout: 90
+        readExistingEvents: false
+        sendBookmarks: true
+        targets:
+          - "*"
+        subscriptionName: security_example
+        queries:
+          - path: Security
+            queryExpression: "*"
+        version: 1495e0c1-20e6-5848-aff0-685c9df9347e
+        querySelector: simple
+        queryList:
+          QueryList:
+            - "@Id": 0
+              Select:
+                - "@Path": Security
+                  "#text": "*"
+    splunkHecAPI: ""
+    pipeline: devnull
+    principal: http/stream.cribl.local@CRIBL.LOCAL
+    keytab: /var/lib/keytab/service.keytab
